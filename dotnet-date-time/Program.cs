@@ -27,3 +27,16 @@ foreach (var timeZoneInfo in TimeZoneInfo.GetSystemTimeZones())
     Console.WriteLine($"Offset from utc: {timeZoneInfo.BaseUtcOffset}");
     Console.WriteLine("_______________________________________________");
 }
+
+Console.WriteLine("*****************************************************************");
+Console.WriteLine("Converting UTC to IST");
+DateTime utcdateTime = DateTime.UtcNow;
+
+Console.WriteLine($"UTC Datetime - {utcdateTime.ToString()}");
+TimeZoneInfo indianTimeZone = TimeZoneInfo.FindSystemTimeZoneById(TimeZoneInfo.Local.Id);
+
+
+DateTime indianDateTime = TimeZoneInfo.ConvertTimeFromUtc(utcdateTime, indianTimeZone);
+Console.WriteLine($"IST Datetime - {indianDateTime.ToString()}");
+Console.WriteLine("*****************************************************************");
+
